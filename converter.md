@@ -7,21 +7,27 @@
 2012 `
 
 Единственная проблема: Arduino IDE пиздит ногами за `String` в коде.
-Нужно фиксить:
 
-` String S = "21.12.2012"; 
- String S1= {S[0], S[1], S[3], S[4], S[6], S[7], S[8], S[9] }; `
-    
 ```sh 
-void convtimer(){
-    
+
+void kk();
+ 
+ 
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  kk();
+}
+
+void kk() {
     int cl=0;
     int cl1=0;
     int page=0;
-    String S = "21.12.2012"; // 2, 5 - hlam
-    String S1= {S[0], S[1], S[3], S[4], S[6], S[7], S[8], S[9] };
+    char S[60] = "21.12.2012"; // 2, 5 - hlam
+    char S1[9]= {S[0], S[1], S[3], S[4], S[6], S[7], S[8], S[9] };
     int stats[3][5];
-    Serial.println(S +" "+ S1);
+    Serial.println(S);
+    Serial.println(S1);
     Serial.println("==Сортируем шо==");
     for(int i=0; i<3; i++){
         for(int j=0; j<4; j++){
@@ -46,11 +52,10 @@ void convtimer(){
     Serial.println("==Вывод==");
     for(int i=0; i<3; i++){
         for(int j=0; j<4; j++){
-            Serial.print(stats[i][j]+ " ");
+            Serial.print(stats[i][j]);
+            Serial.print(" ");
         }
          Serial.println();
     }
-    
 }
-
 ```
